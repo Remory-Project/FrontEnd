@@ -1,0 +1,121 @@
+/* --- Estilos Gerais para o Corpo da Página --- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* --- Estilo do Título da Página --- */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* --- Estilo do Formulário de Cadastro --- */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaçamento entre os campos */
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Adicionado input[type="tel"] aqui para que ele receba os mesmos estilos */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"] {
+    /* <-- Campo Telefone adicionado aqui */
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    margin-bottom: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form input[type="tel"]:focus {
+    /* <-- Campo Telefone adicionado aqui */
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* --- Estilo do Botão de Envio --- */
+form button[type="submit"] {
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #27ae60;
+}
+
+/* --- Estilo do Link "Lista" --- */
+.link-lista {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    background-color: #95a5a6;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.link-lista:hover {
+    background-color: #7f8c8d;
+}
+
+/* --- Responsividade Básica --- */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    form {
+        padding: 20px;
+    }
+}
