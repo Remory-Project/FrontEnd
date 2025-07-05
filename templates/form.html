@@ -1,51 +1,113 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Cadastro de Paciente</title>
     <meta charset="UTF-8">
-
-    <!-- fazendo uma implementação com tag meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/form.css"> 
-
 </head>
 <body>
-    <!-- <h1>Cadastro de Paciente</h1> -->
-    <form method="POST" action="/cadastrar">
-        <h1>Cadastro</h1>
-        Nome: <input type="text" name="nome_completo" required><br>
-        Data de nascimento: <input type="date" name="data_nascimento" required><br>
-        Telefone: <input type="text" name="telefone"><br>
-        Sexo:
-        <select name="sexo" required>
-            <option value="">Selecione</option>
-            <option value="M">Masculino</option>
-            <option value="F">Feminino</option>
-            <option value="O">Outro</option>
-        </select><br>
-        CPF: <input type="text" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Formato esperado: 000.000.000-00"><br>
-        E-mail: <input type="email" name="email"><br>
-        Estado civil: <input type="text" name="est_civ"><br>
-        Nome Mãe: <input type="text" name="n_mae"><br>
-        Nome Pai: <input type="text" name="n_pai"><br>
-        Nacionalidade: <input type="text" name="nacic"><br>
-        Naturalidade: <input type="text" name="natu"><br>
-        Nome Contato de Emergência: <input type="text" name="n_cont_emr"><br>
-        Telefone Contato de Emergência: <input type="text" name="tel_cont_emr"><br>
-        Parentesco Contato de Emergência: <input type="text" name="paren_cont_emr"><br>
-        Endereço: <input type="text" name="end"><br>
-        CEP: <input type="text" name="cep"><br>
-        Tipo Sanguíneo: <input type="text" name="tp_sangue"><br>
-        Alergias: <input type="text" name="alergias"><br>
-        Doenças Crônicas: <input type="text" name="doen_cro"><br>
-        Medicamento em Uso: <input type="text" name="medic_uso"><br>
+    <!-- Cabeçalho superior (baseado na imagem) -->
+    <div class="header">
+        <img src="img/Remory.png" alt="Remory Logo" height="70">
+    </div>
 
-        <button type="submit">Cadastrar</button>
+    <form method="POST" action="/cadastrar">
+        <h1>Detalhes do Paciente</h1>
+        
+        <div>
+            <label for="nome_completo">Nome</label>
+            <input type="text" id="nome_completo" name="nome_completo" required>
+        </div>
+        
+        <div>
+            <label for="data_nascimento">Data de nascimento</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" required>
+        </div>
+        
+        <div>
+            <label for="sexo">Sexo</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Selecione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="O">Outro</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone">
+        </div>
+        
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <div>
+            <label for="est_civ">Estado civil</label>
+            <input type="text" id="est_civ" name="est_civ">
+        </div>
+        
+        <div>
+            <label for="n_mae">Nome da mãe</label>
+            <input type="text" id="n_mae" name="n_mae">
+        </div>
+        
+        <div>
+            <label for="n_pai">Nome do pai</label>
+            <input type="text" id="n_pai" name="n_pai">
+        </div>
+        
+        <div>
+            <label for="nacic">Nacionalidade</label>
+            <input type="text" id="nacic" name="nacic">
+        </div>
+        
+        <div>
+            <label for="natu">Naturalidade</label>
+            <input type="text" id="natu" name="natu">
+        </div>
+        
+        <div>
+            <label for="n_cont_emr">Contato de emergência</label>
+            <input type="text" id="n_cont_emr" name="n_cont_emr">
+        </div>
+        
+        <div>
+            <label for="end">Endereço</label>
+            <input type="text" id="end" name="end">
+        </div>
+        
+        <div>
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" name="cep">
+        </div>
+        
+        <div>
+            <label for="tp_sangue">Tipo sanguíneo</label>
+            <input type="text" id="tp_sangue" name="tp_sangue">
+        </div>
+        
+        <div>
+            <label for="alergias">Alergias</label>
+            <input type="text" id="alergias" name="alergias">
+        </div>
+        
+        <div>
+            <label for="doen_cro">Doenças crônicas</label>
+            <input type="text" id="doen_cro" name="doen_cro">
+        </div>
+        
+        <div>
+            <label for="medic_uso">Medicamentos em uso</label>
+            <input type="text" id="medic_uso" name="medic_uso">
+        </div>
+
+        <button type="submit">Editar</button>
     </form>
 
-
- <a href="{{ url_for('dashboard') }}">lista</a>
-
+    <a href="{{ url_for('dashboard') }}">lista</a>
 </body>
 </html>
