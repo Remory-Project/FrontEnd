@@ -12,20 +12,20 @@
     <div class="container">
         <h1>Pacientes do Cuidador</h1>
 
-        <a href="{{ url_for('form') }}" class="button">Cadastrar Novo Paciente</a>
+        <a href="" class="button">Cadastrar Novo Paciente</a>
 
         <ul>
-            {% for paciente in pacientes %}
+    
             <li>
-                <a href="{{ url_for('detalhes_pacientes', id=paciente.id) }}">
-                    ({{ paciente.nome }})
+                <a href="">
+            
                 </a>
-                <span>(Nascimento: {{ paciente.data_nasc.strftime('%d/%m/%Y') }})</span>
+                <span></span>
             </li>
-            {% endfor %}
+    
         </ul>
 
-        <a href="{{ url_for('logout') }}" class="logout">Sair</a>
+        <a href="" class="logout">Sair</a>
     </div>
 </body>
 </html>

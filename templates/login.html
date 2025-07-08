@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login Cuidador</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
-    <!-- <h1>Login</h1> -->
-    <form method="POST">
+    <form id="login-form">
         <h1>Login</h1>
-        Email: <input type="text" name="email"><br>
-        Senha: <input type="password" name="senha"><br>
+        Email: <input type="text" name="email" id="email"><br>
+        Senha: <input type="password" name="senha" id="senha"><br>
         <button type="submit">Entrar</button>
-        <a href="{{ url_for('cadastro_cuidador') }}">Cadastre-se</a>
+        <a href="">Cadastre-se</a>
     </form>
 
-    <!-- <a href="{{ url_for('cadastro_cuidador') }}">Cadastre-se</a> -->
+    <p id="mensagem"></p>
+
+    <script src="js/login.js"></script>
 </body>
+
 </html>
