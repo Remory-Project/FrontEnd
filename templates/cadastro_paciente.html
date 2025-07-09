@@ -11,8 +11,8 @@
         <img src="img/Remory.png" alt="Remory Logo" height="70">
     </div>
 
-    <form method="POST" action="/cadastrar">
-        <h1>Detalhes do Paciente</h1>
+    <form id="cadastro-formP">
+        <h1>Cadastrar Paciente</h1>
         
         <div>
             <label for="nome_completo">Nome</label>
@@ -28,9 +28,9 @@
             <label for="sexo">Sexo</label>
             <select id="sexo" name="sexo" required>
                 <option value="">Selecione</option>
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-                <option value="O">Outro</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
             </select>
         </div>
         
@@ -104,9 +104,12 @@
             <input type="text" id="medic_uso" name="medic_uso">
         </div>
 
-        <button type="submit">Editar</button>
+        <button type="submit">Cadastrar</button>
+        <p id="mensagem"></p>
+
     </form>
 
-    <a href="">lista</a>
+    <script src="js/cadastro_paciente.js"></script>
+
 </body>
 </html>
