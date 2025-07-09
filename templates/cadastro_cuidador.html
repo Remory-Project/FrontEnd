@@ -9,13 +9,16 @@
 
 
     <h1>Cadastro de Cuidador</h1>
-    <form method="POST" action="/cadastro_cuidador">
-        Nome: <input type="text" name="nome" required><br>
-        E-mail: <input type="email" name="email"><br>
-        Senha: <input type="password" name="senha"><br>
+    <form id="cadastro-form">
+        Nome: <input type="text" name="nome" id="nome" required><br>
+        E-mail: <input type="email" name="email" id="email" required><br>
+        Senha: <input type="password" name="senha" id="senha" required><br>
         <button type="submit">Cadastrar</button>
-        <a href=""></a>
+        <a href="login.html"></a>
     </form>
 
+    <p id="mensagem"></p>
+
+    <script src="js/cadastro_cuidador.js"></script>
 </body>
 </html>
