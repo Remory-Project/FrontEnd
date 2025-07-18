@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://127.0.0.1:3333/lista')
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert("você precisa estar logado");
+      window.location.href = "login.html"
+      return;
+    }
+
+    fetch('http://127.0.0.1:3333/lista',  {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error(`Erro na resposta: ${response.status}`);
@@ -8,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(pacientes => {
         console.log('Pacientes encontrados:', pacientes);
-        exibirPacientes(pacientes); 
+        exibirPacientes(pacientes);
       })
       .catch(error => {
         console.error('Erro ao buscar pacientes:', error);
@@ -21,7 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
     pacientes.forEach(p => {
       const item = document.createElement('li');
-      item.textContent = `${p.nome} - ${p.email}`; 
+      const link = document.createElement('a')
+      link.textContent = `${p.nome} - ${p.email}`;
+      link.href = `detalhe_paciente.html?id=${p.id}`;
+      item.appendChild(link);
       lista.appendChild(item);
     });
   }

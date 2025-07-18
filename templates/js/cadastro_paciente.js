@@ -3,7 +3,16 @@ const mensagem = document.getElementById('mensagem');
 
 
 form.addEventListener('submit', async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
+    
+    const token = localStorage.getItem('token');
+    const cuidador = JSON.parse(localStorage.getItem('cuidador'));
+    
+    if (!token) {
+        alert('você precisa estar logado. ')
+        window.location.href = 'login.html'
+        return;
+    }
 
     const nome = document.getElementById('nome_completo').value;
     const dataDeNascimento = document.getElementById('data_nascimento').value;
@@ -27,7 +36,8 @@ form.addEventListener('submit', async (event) => {
         const resposta = await fetch('http://127.0.0.1:3333/criar/paciente', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 nome,
@@ -41,18 +51,16 @@ form.addEventListener('submit', async (event) => {
                 nacionalidade,
                 naturalidade,
                 contatoDeEmergencia,
-                // nomeResponsavel,
                 endereco,
                 cep,
                 tipoSanguineo,
                 alergias,
                 doencaCronica,
-                medicamentosEmUso
+                medicamentosEmUso,
             }),
         });
 
         const dados = await resposta.json();
-        console.log("resposta", resposta.status);
 
         if (resposta.ok) {
             mensagem.textContent = dados.mensagem || 'Cadastro realizado com sucesso!';
@@ -66,5 +74,6 @@ form.addEventListener('submit', async (event) => {
     } catch (erro) {
         mensagem.textContent = 'Erro ao conectar com o servidor.';
         mensagem.style.color = 'red';
+        console.error("Erro:", erro)
     }
 });

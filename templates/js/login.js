@@ -2,7 +2,7 @@ const form = document.getElementById('login-form');
 const mensagem = document.getElementById('mensagem');
 
 form.addEventListener('submit', async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
@@ -17,19 +17,24 @@ form.addEventListener('submit', async (event) => {
         });
 
         const dados = await resposta.json();
-        console.log("resposta", resposta.status)
 
         if (resposta.ok) {
-            mensagem.textContent = dados.mensagem || 'Login realizado com sucesso!';
+            localStorage.setItem('token', dados.token);
+            localStorage.setItem('cuidador', JSON.stringify(dados.cuidador || {}));
+
+
+            mensagem.innerText = dados.message ;
             mensagem.style.color = 'green';
+
             window.location.href = 'dashboard.html';
 
         } else {
-            mensagem.textContent = dados.mensagem || 'Erro no login.';
+            mensagem.innerText = dados.message || 'Erro no login.';
             mensagem.style.color = 'red';
         }
     } catch (erro) {
-        mensagem.textContent = 'Erro ao conectar com o servidor.';
+        mensagem.innerText = 'Erro ao conectar com o servidor.';
         mensagem.style.color = 'red';
+        console.error(error);
     }
 });
