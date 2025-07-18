@@ -1,27 +1,219 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <title>Detalhes do Paciente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do paciente</title>
     <link rel="stylesheet" href="css/detalhes_pacientes.css">
 </head>
-
 <body>
-    <div class="container">
-        <h1>Informações do Paciente</h1>
+    <header class="header">
+        <img src="img/Remory.png" alt="Remory Logo" height="70">
+    </header>
 
-        <ul>
-            <li><strong>Nome:</strong> </li>
-            <li><strong>Data de nascimento:</strong> {{ paciente.data_nasc }}</li>
-            <li><strong>Sexo:</strong> {{ paciente.sexo }}</li>
-            <li><strong>CPF:</strong> {{ paciente.cpf }}</li>
-            <li><strong>Email:</strong> {{ paciente.email }}</li>
-        </ul>
-        
-        <p>Paciente não encontrado.</p>
 
-        <a href="">← Voltar</a>
+    <main class="main-content">
+        <div class="container">
+            <!-- Seção Informações do Paciente -->
+            <section class="patient-details">
+                <h2 class="section-title">Informações do Paciente</h2>
+                
+                <ul class="patient-info-list">
+                    <li><strong>Nome:</strong> <span id="patient-nome"></span></li>
+                    <li><strong>Data de nascimento:</strong> <span id="patient-data-nascimento"></span></li>
+                    <li><strong>Sexo:</strong> <span id="patient-sexo"></span></li>
+                    <li><strong>CPF:</strong> <span id="patient-cpf"></span></li>
+                    <li><strong>Email:</strong> <span id="patient-email"></span></li>
+                </ul>
+                
+                <p class="patient-not-found" id="patient-not-found" style="display: none;">Paciente não encontrado.</p>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-primary" id="btn-editar">Editar</button>
+                </div>
+            </section>
+
+            <!-- Botão Criar novo Relatório -->
+            <div class="new-report-section">
+                <button type="button" class="btn btn-secondary" id="btn-novo-relatorio">Criar novo Relatório</button>
+            </div>
+
+            <!-- Seção Relatórios de Visitas -->
+            <section class="reports-section">
+                <h2 class="section-title">Relatórios de Visitas</h2>
+                
+                <div class="reports-container" id="reports-container">
+                    <!-- Os relatórios serão inseridos aqui dinamicamente -->
+                </div>
+            </section>
+
+            <!-- Botão Voltar -->
+            <div class="back-section">
+                <button type="button" class="btn btn-back" id="btn-voltar">Voltar</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para criar novo relatório -->
+    <div class="modal" id="modal-novo-relatorio">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Criar Novo Relatório de Visita</h3>
+                <button type="button" class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-novo-relatorio">
+                    <div class="form-group">
+                        <label for="data-visita">Data da Visita</label>
+                        <input type="date" id="data-visita" name="data-visita" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hora-visita">Hora da Visita</label>
+                        <input type="time" id="hora-visita" name="hora-visita" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipo-visita">Tipo de Visita</label>
+                        <select id="tipo-visita" name="tipo-visita" required>
+                            <option value="">Selecione...</option>
+                            <option value="consulta">Consulta</option>
+                            <option value="retorno">Retorno</option>
+                            <option value="emergencia">Emergência</option>
+                            <option value="exame">Exame</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descricao-visita">Descrição da Visita</label>
+                        <textarea id="descricao-visita" name="descricao-visita" rows="4" required placeholder="Descreva os detalhes da visita..."></textarea>
+                    </div>
+                            <div class="form-group">
+                        <label for="observacoes-visita">Observações</label>
+                        <textarea id="observacoes-visita" name="observacoes-visita" placeholder="Informações adicionais sobre a visita (opcional)"></textarea>
+                    </div>
+                </div>
+
+                <!-- Seção de Informações Adicionais -->
+                <div class="additional-info-section">
+                    
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="medicamentos">Medicamentos</label>
+                            <input type="text" id="medicamentos" name="medicamentos" placeholder="Ex: Conforme prescrição médica">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="localizacao-dor">Localização Dor</label>
+                            <input type="text" id="localizacao-dor" name="localizacao-dor" placeholder="Ex: N/A ou região específica">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="horario-meds">Horário Meds</label>
+                            <input type="text" id="horario-meds" name="horario-meds" placeholder="Ex: 08:00, 14:00, 20:00">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pressao-arterial">Pressão Arterial</label>
+                            <input type="text" id="pressao-arterial" name="pressao-arterial" placeholder="Ex: 130/80 mmHg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="temperatura">Temperatura</label>
+                            <input type="text" id="temperatura" name="temperatura" placeholder="Ex: 36.5°C">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input type="text" id="peso" name="peso" placeholder="Ex: 68 kg"><br>
+                            <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="btn-salvar-relatorio" form="form-novo-relatorio">Salvar Relatório</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
 
+    <!-- Modal para visualizar detalhes do relatório -->
+    <div class="modal" id="modal-detalhes-relatorio">
+        <div class="modal-content modal-details">
+            <div class="modal-header modal-header-details">
+                <h3 id="modal-details-title">Relatório de Visita - 20/05/2025</h3>
+                <button type="button" class="modal-close" id="modal-details-close">&times;</button>
+            </div>
+            <div class="modal-body modal-body-details">
+                <div class="details-content">
+                    <div class="details-section">
+                        <h4>Informações da Visita</h4>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Data da Visita:</label>
+                                <span id="detail-data"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Hora da Visita:</label>
+                                <span id="detail-hora"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Tipo de Visita:</label>
+                                <span id="detail-tipo"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Descrição da Visita</h4>
+                        <div class="detail-description" id="detail-descricao">
+                            <!-- Descrição será inserida aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="details-section" id="detail-observacoes-section">
+                        <h4>Observações</h4>
+                        <div class="detail-description" id="detail-observacoes">
+                            <!-- Observações serão inseridas aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Informações Adicionais</h4>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Medicamentos:</label>
+                                <span id="detail-medicamentos">Conforme prescrição</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Localização Dor:</label>
+                                <span id="detail-localizacao">N/A</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Horário Meds:</label>
+                                <span id="detail-horario-meds">14:17 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Pressão Arterial:</label>
+                                <span id="detail-pressao">130/80 mmHg</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Temperatura:</label>
+                                <span id="detail-temperatura">36.5°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Peso:</label>
+                                <span id="detail-peso">68 kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-back" id="btn-voltar-detalhes">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/detalhe_paciente.js"></script>
+</body>
 </html>
