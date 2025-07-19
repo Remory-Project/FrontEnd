@@ -16,6 +16,7 @@ header {
     gap: 10px;
 }
 
+
 .container {
     max-width: 600px;
     margin: 50px auto;
@@ -88,3 +89,4 @@ a.logout {
 a.logout:hover {
     background-color: #c0392b;
 }
+

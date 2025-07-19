@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         const paciente = await resposta.json();
+        console.log(paciente);
 
         if (resposta.ok) {
             preencherDados(paciente);

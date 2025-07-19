@@ -9,6 +9,7 @@
 <body>
     <header class="header">
         <img src="img/Remory.png" alt="Remory Logo" height="70">
+        <a href="dashboard.html">Dashboard</a>
     </header>
 
 
@@ -19,11 +20,23 @@
                 <h2 class="section-title">Informações do Paciente</h2>
                 
                 <ul class="patient-info-list">
-                    <li><strong>Nome:</strong> <span id="patient-nome"></span></li>
-                    <li><strong>Data de nascimento:</strong> <span id="patient-data-nascimento"></span></li>
-                    <li><strong>Sexo:</strong> <span id="patient-sexo"></span></li>
-                    <li><strong>CPF:</strong> <span id="patient-cpf"></span></li>
-                    <li><strong>Email:</strong> <span id="patient-email"></span></li>
+                    <li><strong>Nome:</strong> <span id="nome_completo"></span></li>
+                    <li><strong>Email:</strong> <span id="email"></span></li>
+                    <li><strong>Telefone:</strong> <span id="telefone"></span></li>
+                    <li><strong>Data de nascimento:</strong> <span id="data_nascimento"></span></li>
+                    <li><strong>Sexo:</strong> <span id="sexo"></span></li>
+                    <li><strong>Estado civil:</strong> <span id="estado_civil"></span></li>
+                    <li><strong>Nome da Mãe:</strong> <span id="nome_mae"></span></li>
+                    <li><strong>Nome do Pai:</strong> <span id="nome_pai"></span></li>
+                    <li><strong>Nacionalidade:</strong> <span id="nacionalidade"></span></li>
+                    <li><strong>Naturalidade:</strong> <span id="naturalidade"></span></li>
+                    <li><strong>Contato de Emergência:</strong> <span id="contato_emergencia"></span></li>
+                    <li><strong>Endereço:</strong> <span id="endereco"></span></li>
+                    <li><strong>Cep:</strong> <span id="cep"></span></li>
+                    <li><strong>Tipo Sanguíneo:</strong> <span id="tipo_sanguineo"></span></li>
+                    <li><strong>Alergia:</strong> <span id="alergias"></span></li>
+                    <li><strong>Doença crônica:</strong> <span id="doenca_cronica"></span></li>
+                    <li><strong>Medicamentos:</strong> <span id="medicamentos"></span></li>
                 </ul>
                 
                 <p class="patient-not-found" id="patient-not-found" style="display: none;">Paciente não encontrado.</p>
@@ -207,9 +220,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-back" id="btn-voltar-detalhes">Voltar</button>
             </div>
         </div>
     </div>
