@@ -23,7 +23,6 @@ form.addEventListener('submit', async (event) => {
     const nomeDaMae = document.getElementById('n_mae').value;
     const nomeDoPai = document.getElementById('n_pai').value;
     const nacionalidade = document.getElementById('nacic').value;
-    const naturalidade = document.getElementById('natu').value;
     const contatoDeEmergencia = document.getElementById('n_cont_emr').value;
     const endereco = document.getElementById('end').value;
     const cep = document.getElementById('cep').value;
@@ -49,7 +48,6 @@ form.addEventListener('submit', async (event) => {
                 nomeDaMae,
                 nomeDoPai,
                 nacionalidade,
-                naturalidade,
                 contatoDeEmergencia,
                 endereco,
                 cep,

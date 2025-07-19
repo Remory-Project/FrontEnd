@@ -45,7 +45,6 @@ function preencherDados(p) {
     document.getElementById('nome_mae').textContent = p.nomeDaMae;
     document.getElementById('nome_pai').textContent = p.nomeDoPai;
     document.getElementById('nacionalidade').textContent = p.nacionalidade;
-    document.getElementById('naturalidade').textContent = p.naturalidade;
     document.getElementById('contato_emergencia').textContent = p.contatoDeEmergencia;
     document.getElementById('endereco').textContent = p.endereco;
     document.getElementById('cep').textContent = p.cep;
