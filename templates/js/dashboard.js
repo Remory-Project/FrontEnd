@@ -7,7 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch('http://127.0.0.1:3333/lista',  {
+    const logoutBtn = document.getElementById('logout');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        localStorage.removeItem('cuidador');
+        window.location.href = 'login.html';
+      })
+    }
+
+
+    fetch('http://127.0.0.1:3333/lista', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -30,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function exibirPacientes(pacientes) {
     const lista = document.getElementById('lista-pacientes');
+
+    lista.innerHTML = '';
+
+    if (!pacientes || pacientes.length === 0) {
+      const vazio = document.createElement('p');
+      vazio.textContent = 'nenhum paciente cadastrado.';
+      lista.appendChild(vazio);
+      return;
+    }
   
     pacientes.forEach(p => {
       const item = document.createElement('li');

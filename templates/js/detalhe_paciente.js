@@ -174,3 +174,97 @@ async function carregarRelatorios(pacienteId, token) {
         listaRelatorios.innerHTML = '<p>Erro ao buscar relatórios.</p>';
     }
 }
+
+// Variáveis do modal de edição
+const btnEditar = document.getElementById('btn-editar');
+const modalEditar = document.getElementById('modal-editar-paciente');
+const fecharModalEditar = document.getElementById('fechar-modal-editar');
+const btnCancelarEdicao = document.getElementById('btn-cancelar-edicao');
+const formEditar = document.getElementById('form-editar-paciente');
+
+btnEditar?.addEventListener('click', () => {
+    // Preenche os inputs do modal com os dados atuais
+    document.getElementById('edit-nome').value = document.getElementById('nome_completo').textContent;
+    document.getElementById('edit-email').value = document.getElementById('email').textContent;
+    document.getElementById('edit-telefone').value = document.getElementById('telefone').textContent;
+    // Converter data no formato correto para input date se necessário:
+    const dataNascimento = document.getElementById('data_nascimento').textContent;
+    document.getElementById('edit-data-nascimento').value = dataNascimento ? new Date(dataNascimento).toISOString().slice(0, 10) : '';
+
+    document.getElementById('edit-sexo').value = document.getElementById('sexo').textContent;
+    document.getElementById('edit-estado-civil').value = document.getElementById('estado_civil').textContent;
+    document.getElementById('edit-nome-mae').value = document.getElementById('nome_mae').textContent;
+    document.getElementById('edit-nome-pai').value = document.getElementById('nome_pai').textContent;
+    document.getElementById('edit-nacionalidade').value = document.getElementById('nacionalidade').textContent;
+    document.getElementById('edit-contato-emergencia').value = document.getElementById('contato_emergencia').textContent;
+    document.getElementById('edit-endereco').value = document.getElementById('endereco').textContent;
+    document.getElementById('edit-cep').value = document.getElementById('cep').textContent;
+    document.getElementById('edit-tipo-sanguineo').value = document.getElementById('tipo_sanguineo').textContent;
+    document.getElementById('edit-alergias').value = document.getElementById('alergias').textContent;
+    document.getElementById('edit-doenca-cronica').value = document.getElementById('doenca_cronica').textContent;
+    document.getElementById('edit-medicamentos').value = document.getElementById('medicamentos').textContent;
+
+    modalEditar.style.display = 'block';
+});
+
+fecharModalEditar?.addEventListener('click', () => {
+    modalEditar.style.display = 'none';
+});
+btnCancelarEdicao?.addEventListener('click', () => {
+    modalEditar.style.display = 'none';
+});
+
+// Fecha modal ao clicar fora dele
+window.addEventListener('click', (event) => {
+    if (event.target === modalEditar) {
+        modalEditar.style.display = 'none';
+    }
+});
+
+// Envio do formulário de edição
+formEditar?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const dadosEditados = {
+        nome: document.getElementById('edit-nome').value.trim(),
+        email: document.getElementById('edit-email').value.trim(),
+        telefone: document.getElementById('edit-telefone').value.trim(),
+        dataDeNascimento: document.getElementById('edit-data-nascimento').value,
+        sexo: document.getElementById('edit-sexo').value,
+        estadoCivil: document.getElementById('edit-estado-civil').value.trim(),
+        nomeDaMae: document.getElementById('edit-nome-mae').value.trim(),
+        nomeDoPai: document.getElementById('edit-nome-pai').value.trim(),
+        nacionalidade: document.getElementById('edit-nacionalidade').value.trim(),
+        contatoDeEmergencia: document.getElementById('edit-contato-emergencia').value.trim(),
+        endereco: document.getElementById('edit-endereco').value.trim(),
+        cep: document.getElementById('edit-cep').value.trim(),
+        tipoSanguineo: document.getElementById('edit-tipo-sanguineo').value.trim(),
+        alergias: document.getElementById('edit-alergias').value.trim(),
+        doencaCronica: document.getElementById('edit-doenca-cronica').value.trim(),
+        medicamentosEmUso: document.getElementById('edit-medicamentos').value.trim(),
+    };
+
+    try {
+        const resposta = await fetch(`http://127.0.0.1:3333/paciente/${pacienteId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(dadosEditados)
+        });
+
+        const resultado = await resposta.json();
+
+        if (resposta.ok) {
+            alert('Paciente atualizado com sucesso!');
+            modalEditar.style.display = 'none';
+            preencherDados(resultado); // Atualiza a visualização com os dados atualizados
+        } else {
+            alert(resultado.mensagem || 'Erro ao atualizar paciente.');
+        }
+    } catch (erro) {
+        console.error('Erro ao atualizar paciente:', erro);
+        alert('Erro ao atualizar paciente. Veja o console para detalhes.');
+    }
+});
