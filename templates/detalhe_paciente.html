@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações do paciente</title>
     <link rel="stylesheet" href="css/detalhes_pacientes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -18,7 +19,7 @@
             <!-- Seção Informações do Paciente -->
             <section class="patient-details">
                 <h2 class="section-title">Informações do Paciente</h2>
-                
+        
                 <ul class="patient-info-list">
                     <li><strong>Nome:</strong> <span id="nome_completo"></span></li>
                     <li><strong>Email:</strong> <span id="email"></span></li>
@@ -54,9 +55,8 @@
             <section class="reports-section">
                 <h2 class="section-title">Relatórios de Visitas</h2>
                 
-                <div class="reports-container" id="lista-relatorios">
+                <div class="reports-container" id="lista-relatorios"></div>
                     <!-- Os relatórios serão inseridos aqui dinamicamente -->
-                </div>
             </section>
 
             <!-- Botão Voltar -->
@@ -69,7 +69,7 @@
     <!-- Modal para criar novo relatório -->
     <div class="modal" id="modal-novo-relatorio">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header"> 
                 <h3>Criar Novo Relatório de Visita</h3>
                 <button type="button" class="modal-close" id="modal-close">&times;</button>
             </div>
@@ -100,15 +100,12 @@
                         <label for="descricao-visita">Descrição da Visita</label>
                         <textarea id="descricao-visita" name="descricao-visita" rows="4" required placeholder="Descreva os detalhes da visita..."></textarea>
                     </div>
-                            <div class="form-group">
+                    <div class="form-group">
                         <label for="observacoes-visita">Observações</label>
                         <textarea id="observacoes-visita" name="observacoes-visita" placeholder="Informações adicionais sobre a visita (opcional)"></textarea>
                     </div>
-                </div>
 
                 <!-- Seção de Informações Adicionais -->
-                <div class="additional-info-section">
-                    
                     
                     <div class="form-grid">
                         <div class="form-group">
@@ -138,15 +135,20 @@
                         
                         <div class="form-group">
                             <label for="peso">Peso</label>
-                            <input type="text" id="peso" name="peso" placeholder="Ex: 68 kg"><br>
-                            <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" id="btn-salvar-relatorio" form="form-novo-relatorio">Salvar Relatório</button>
+                            <input type="text" id="peso" name="peso" placeholder="Ex: 68 kg">
                         </div>
                     </div>
-                </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" id="btn-cancelar-relatorio">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-salvar-relatorio">Salvar Relatório</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+        
+    
 
     <!-- Modal para visualizar detalhes do relatório -->
     <div class="modal" id="modal-detalhes-relatorio">
