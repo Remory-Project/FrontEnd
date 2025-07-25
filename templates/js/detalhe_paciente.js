@@ -293,7 +293,7 @@ async function carregarRelatorios(pacienteId, token) {
                     const relatorioId = btn.getAttribute('data-id');
                     if (confirm("Tem certeza que deseja excluir este relatório?")) {
                         try {
-                            const resposta = await fetch(`http://127.0.0.1:3333/relatorio/${relatorioId}`, {
+                            const resposta = await fetch(`http://127.0.0.1:3333/delete-relatorio/${relatorioId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'Authorization': `Bearer ${token}`
@@ -301,7 +301,7 @@ async function carregarRelatorios(pacienteId, token) {
                             });
 
                             if (resposta.ok) {
-                                alert('Relatório excluído com sucesso.');
+                                btn.closest('.report-card').remove();
                                 await carregarRelatorios(pacienteId, token); // recarrega a lista
                             } else {
                                 const erro = await resposta.json();
