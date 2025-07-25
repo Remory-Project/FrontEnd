@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         try {
-            const resposta = await fetch(`http://127.0.0.1:3333/paciente/${pacienteId}`, {
+            const resposta = await fetch(`http://127.0.0.1:3333/edit-paciente/${pacienteId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
