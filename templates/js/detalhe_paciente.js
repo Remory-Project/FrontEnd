@@ -375,7 +375,6 @@ document.getElementById('btn-excluir-paciente')?.addEventListener('click', async
             });
 
             if (resposta.ok) {
-                alert('Paciente excluído com sucesso.');
                 window.location.href = 'dashboard.html';
             } else {
                 const erro = await resposta.json();
