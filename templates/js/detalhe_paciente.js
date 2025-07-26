@@ -363,3 +363,27 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
+
+document.getElementById('btn-excluir-paciente')?.addEventListener('click', async () => {
+    if (confirm("Tem certeza que deseja excluir este paciente?")) {
+        try {
+            const resposta = await fetch(`http://127.0.0.1:3333/delete-paciente/${pacienteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (resposta.ok) {
+                alert('Paciente excluído com sucesso.');
+                window.location.href = 'dashboard.html';
+            } else {
+                const erro = await resposta.json();
+                alert(erro.message || 'Erro ao excluir paciente.');
+            }
+        } catch (erro) {
+            console.error('Erro ao excluir paciente:', erro);
+            alert('Erro ao excluir paciente.');
+        }
+    }
+});

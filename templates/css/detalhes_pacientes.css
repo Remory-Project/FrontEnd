@@ -599,3 +599,8 @@ header a {
     margin-left: auto;
 }
 
+.container-excluir-paciente {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
