@@ -284,7 +284,14 @@ async function carregarRelatorios(pacienteId, token) {
             document.querySelectorAll('.btn-view-details').forEach(btn =>
                 btn.addEventListener('click', () => {
                     const relatorioId = btn.getAttribute('data-id');
-                    alert(`Abrir modal com detalhes do relatório ${relatorioId} (ainda será implementado).`);
+                    const relatorio = dados.find(r => r.id === relatorioId);
+
+                    if (relatorio) {
+                        abrirModalDetalhes(relatorio)
+                    } else {
+                        alert("Relatorio não encontrado")
+                    }
+                    
                 })
             );
 
@@ -324,3 +331,35 @@ async function carregarRelatorios(pacienteId, token) {
         listaRelatorios.innerHTML = '<p>Erro ao buscar relatórios.</p>';
     }
 }
+
+function abrirModalDetalhes(relatorio) {
+    // Pega os elementos do modal
+    document.getElementById('modal-details-title').textContent = `Relatório de Visita - ${relatorio.dataVisita}`;
+    document.getElementById('detail-data').textContent = relatorio.dataVisita;
+    document.getElementById('detail-hora').textContent = relatorio.horaVisita;
+    document.getElementById('detail-tipo').textContent = relatorio.tipoVisita;
+    document.getElementById('detail-descricao').textContent = relatorio.descricaoVisita;
+    document.getElementById('detail-observacoes').textContent = relatorio.observacoesVisita || 'Nenhuma';
+
+    // Informações adicionais
+    document.getElementById('detail-medicamentos').textContent = relatorio.medicamentos || 'N/A';
+    document.getElementById('detail-localizacao').textContent = relatorio.localizacaoDor || 'N/A';
+    document.getElementById('detail-horario-meds').textContent = relatorio.horarioMeds || 'N/A';
+    document.getElementById('detail-pressao').textContent = relatorio.pressaoArterial || 'N/A';
+    document.getElementById('detail-temperatura').textContent = relatorio.temperatura || 'N/A';
+    document.getElementById('detail-peso').textContent = relatorio.peso || 'N/A';
+
+    // Exibe o modal
+    document.getElementById('modal-detalhes-relatorio').style.display = 'block';
+}
+
+document.getElementById('modal-details-close')?.addEventListener('click', () => {
+    document.getElementById('modal-detalhes-relatorio').style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('modal-detalhes-relatorio');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
