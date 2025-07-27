@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!pacientes || pacientes.length === 0) {
       const vazio = document.createElement('p');
-      vazio.textContent = 'nenhum paciente cadastrado.';
       lista.appendChild(vazio);
       return;
     }
