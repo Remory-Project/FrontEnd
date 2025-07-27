@@ -29,7 +29,6 @@ form.addEventListener('submit', async (event) => {
     const tipoSanguineo = document.getElementById('tp_sangue').value;
     const alergias = document.getElementById('alergias').value;
     const doencaCronica = document.getElementById('doen_cro').value;
-    const medicamentosEmUso = document.getElementById('medic_uso').value;
 
     try {
         const resposta = await fetch('http://127.0.0.1:3333/criar/paciente', {
@@ -54,7 +53,6 @@ form.addEventListener('submit', async (event) => {
                 tipoSanguineo,
                 alergias,
                 doencaCronica,
-                medicamentosEmUso,
             }),
         });
 

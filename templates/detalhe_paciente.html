@@ -16,7 +16,6 @@
     <main class="main-content">
 
         <div class="container">
-            <!-- Seção Informações do Paciente -->
             <section class="patient-details">
                 <h2 class="section-title">Informações do Paciente</h2>
                 <div class="container-excluir-paciente">
@@ -39,7 +38,6 @@
                     <li><strong>Tipo Sanguíneo:</strong> <span id="tipo_sanguineo"></span></li>
                     <li><strong>Alergia:</strong> <span id="alergias"></span></li>
                     <li><strong>Doença crônica:</strong> <span id="doenca_cronica"></span></li>
-                    <li><strong>Medicamentos:</strong> <span id="medicamentos"></span></li>
                 </ul>
                 
                 <p class="patient-not-found" id="patient-not-found" style="display: none;">Paciente não encontrado.</p>
@@ -49,30 +47,25 @@
                 </div>
             </section>
 
-            <!-- Botão Criar novo Relatório -->
             <div class="new-report-section">
                 <button type="button" class="btn btn-secondary" id="btn-novo-relatorio">Criar novo Relatório</button>
             </div>
 
-            <!-- Seção Relatórios de Visitas -->
             <section class="reports-section">
                 <h2 class="section-title">Relatórios de Visitas</h2>
                 
                 <div class="reports-container" id="lista-relatorios"></div>
-                    <!-- Os relatórios serão inseridos aqui dinamicamente -->
             </section>
 
-            <!-- Botão Voltar -->
             <div class="back-section">
                 <button type="button" class="btn btn-back" id="btn-voltar">Voltar</button>
             </div>
         </div>
     </main>
 
-    <!-- Modal para criar novo relatório -->
     <div class="modal" id="modal-novo-relatorio">
         <div class="modal-content">
-            <div class="modal-header"> 
+            <div class="modal-header">
                 <h3>Criar Novo Relatório de Visita</h3>
                 <button type="button" class="modal-close" id="modal-close">&times;</button>
             </div>
@@ -108,22 +101,12 @@
                         <textarea id="observacoes-visita" name="observacoes-visita" placeholder="Informações adicionais sobre a visita (opcional)"></textarea>
                     </div>
 
-                <!-- Seção de Informações Adicionais -->
                     
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label for="medicamentos">Medicamentos</label>
-                            <input type="text" id="medicamentos" name="medicamentos" placeholder="Ex: Conforme prescrição médica">
-                        </div>
                         
                         <div class="form-group">
                             <label for="localizacao-dor">Localização da Dor</label>
                             <input type="text" id="localizacao-dor" name="localizacao-dor" placeholder="Ex: N/A ou região específica">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="horario-meds">Horário Meds</label>
-                            <input type="text" id="horario-meds" name="horario-meds" placeholder="Ex: 08:00, 14:00, 20:00">
                         </div>
                         
                         <div class="form-group">
@@ -198,16 +181,8 @@
                         <h4>Informações Adicionais</h4>
                         <div class="details-grid">
                             <div class="detail-item">
-                                <label>Medicamentos:</label>
-                                <span id="detail-medicamentos">Conforme prescrição</span>
-                            </div>
-                            <div class="detail-item">
                                 <label>Localização Dor:</label>
                                 <span id="detail-localizacao">N/A</span>
-                            </div>
-                            <div class="detail-item">
-                                <label>Horário Meds:</label>
-                                <span id="detail-horario-meds">14:17 PM</span>
                             </div>
                             <div class="detail-item">
                                 <label>Pressão Arterial:</label>
@@ -301,16 +276,75 @@
                         <label for="edit-doenca-cronica">Doença Crônica</label>
                         <input type="text" id="edit-doenca-cronica" name="doencaCronica">
                     </div>
-                    <div class="form-group">
-                        <label for="edit-medicamentos">Medicamentos em Uso</label>
-                        <input type="text" id="edit-medicamentos" name="medicamentosEmUso">
-                    </div>
                     <div class="form-buttons">
                         <button type="submit" class="btn btn-primary">Salvar</button>
                         <button type="button" class="btn btn-secondary" id="btn-cancelar-edicao">Cancelar</button>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+
+    <button id="btn-novo-medicamento">Adicionar Medicamento</button>
+
+    <div id="modal-novo-medicamento" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="modal-med-close" class="close">&times;</span>
+            <h2>Novo Medicamento</h2>
+
+            <form id="form-novo-medicamento">
+            <div>
+                <label>Nome</label>
+                <input type="text" id="med-nome" required>
+            </div>
+
+            <div>
+                <label>Descrição (opcional)</label>
+                <textarea id="med-descricao"></textarea>
+            </div>
+
+            <div id="lista-horarios">
+                <div class="horario-item">
+                <label>Horários</label> <br>
+                <input type="time" class="med-horario" required>
+                <button type="button" class="btn-remover-horario" style="display:none;">Remover</button>
+                </div>
+            </div>
+
+            <button type="button" id="btn-add-horario">+ adicionar horário</button>
+
+            <button type="submit">Salvar</button>
+            <button type="button" id="btn-cancelar-med">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <h3>Medicamentos Agendados</h3>
+    <div id="lista-medicamentos"></div>
+    
+    <!-- MODAL DE EDIÇÃO DE MEDICAMENTO -->
+    <div id="modal-editar-medicamento" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="fechar-modal-editar-medicamento" class="close">&times;</span>
+            <h2>Editar Medicamento</h2>
+            <form id="form-editar-medicamento">
+                <label for="edit-nome-medicamento">Nome do Medicamento</label>
+                <input type="text" id="edit-nome-medicamento" required>
+    
+                <label for="edit-descricao-medicamento">Descrição</label>
+                <textarea id="edit-descricao-medicamento"></textarea>
+    
+                <div id="horarios-edit-container">
+                    <label>Horários</label>
+                    <button type="button" id="btn-add-horario-edit">+ Adicionar Horário</button>
+                    <div id="lista-horarios-edit"></div>
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                    <button type="button" id="btn-cancelar-edicao-medicamento">Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 
