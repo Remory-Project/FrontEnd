@@ -605,3 +605,360 @@ header a {
     justify-content: flex-end;
     margin-bottom: 10px;
 }
+
+
+
+
+
+
+
+
+
+/* Estilos específicos para o modal de medicamentos */
+#modal-novo-medicamento.modal,
+#modal-editar-medicamento.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top, higher than other modals if any */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    backdrop-filter: blur(4px); /* Adiciona um leve desfoque ao fundo */
+}
+
+#modal-novo-medicamento .modal-content,
+#modal-editar-medicamento .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative; /* Para posicionar o botão de fechar */
+}
+
+#modal-novo-medicamento .close,
+#modal-editar-medicamento .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+#modal-novo-medicamento .close:hover,
+#modal-novo-medicamento .close:focus,
+#modal-editar-medicamento .close:hover,
+#modal-editar-medicamento .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-novo-medicamento h2,
+#modal-editar-medicamento h2 {
+    color: #2c5aa0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos do Formulário de Medicamentos */
+#form-novo-medicamento div,
+#form-editar-medicamento div {
+    margin-bottom: 15px;
+}
+
+#form-novo-medicamento label,
+#form-editar-medicamento label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#form-novo-medicamento input[type="text"],
+#form-novo-medicamento input[type="time"],
+#form-novo-medicamento textarea,
+#form-editar-medicamento input[type="text"],
+#form-editar-medicamento textarea {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#form-novo-medicamento textarea,
+#form-editar-medicamento textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Botões */
+#form-novo-medicamento button,
+#form-editar-medicamento button,
+#btn-novo-medicamento {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#btn-novo-medicamento {
+    background-color: #007bff;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#form-novo-medicamento button[type="submit"],
+#form-editar-medicamento .btn-salvar {
+    background-color: #28a745; /* Verde para salvar */
+    color: white;
+}
+
+#form-novo-medicamento button[type="button"]#btn-cancelar-med,
+#form-editar-medicamento button[type="button"]#btn-cancelar-edicao-medicamento {
+    background-color: #dc3545; /* Vermelho para cancelar */
+    color: white;
+}
+
+#btn-add-horario,
+#btn-add-horario-edit {
+    background-color: #007bff; /* Azul para adicionar horário */
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-remover-horario {
+    background-color: #dc3545; /* Vermelho para remover horário */
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+#form-novo-medicamento button:hover,
+#form-editar-medicamento button:hover,
+#btn-novo-medicamento:hover {
+    opacity: 0.9;
+}
+
+/* Horários */
+.horario-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.horario-item input[type="time"] {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+/* Lista de Medicamentos Agendados */
+#lista-medicamentos {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Footer do Modal de Edição */
+#modal-editar-medicamento .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+
+
+
+/* Estilos para itens individuais de medicamento na lista */
+.medicamento-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.medicamento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.medicamento-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.medicamento-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-left: 10px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.medicamento-actions button:hover {
+    color: #007bff;
+}
+
+.medicamento-details p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.medicamento-details p strong {
+    color: #333;
+}
+
+.medicamento-details .horarios {
+    font-weight: bold;
+}
+
+
+
+
+/* Ajustes para o botão 'Adicionar Medicamento' */
+#btn-novo-medicamento {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-novo-medicamento:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes para o título 'Medicamentos Agendados' */
+h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+
+
+
+/* Estilos para os ícones de edição e exclusão */
+.medicamento-actions .edit-icon,
+.medicamento-actions .delete-icon {
+    /* Assumindo que você usará ícones SVG ou de fonte */
+    width: 20px; /* Ajuste conforme o tamanho do seu ícone */
+    height: 20px; /* Ajuste conforme o tamanho do seu ícone */
+    vertical-align: middle;
+}
+
+.medicamento-actions button.edit-button {
+    color: #007bff; /* Cor azul para o botão de edição */
+}
+
+.medicamento-actions button.delete-button {
+    color: #dc3545; /* Cor vermelha para o botão de exclusão */
+}
+
+
+
+
+/* Aumentando a especificidade para os botões de ação dentro de .medicamento-actions */
+.medicamento-item .medicamento-actions button {
+    background: none !important; /* Força a remoção de qualquer background */
+    border: none !important;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-left: 10px;
+    color: #666;
+    transition: color 0.3s ease;
+    padding: 0; /* Remove padding que pode vir de estilos globais */
+}
+
+.medicamento-item .medicamento-actions button:hover {
+    color: #007bff;
+}
+
+.medicamento-item .medicamento-actions button.edit-button {
+    color: #007bff !important; /* Cor azul para o botão de edição */
+}
+
+.medicamento-item .medicamento-actions button.delete-button {
+    color: #dc3545 !important; /* Cor vermelha para o botão de exclusão */
+}
+
+
+
+
+/* Ajustes adicionais para os botões de ação para garantir que os ícones sejam exibidos corretamente */
+.medicamento-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Tamanho fixo para os botões de ícone */
+    height: 30px; /* Tamanho fixo para os botões de ícone */
+    border-radius: 50%; /* Para torná-los redondos, se desejar */
+    font-size: 1.2em; /* Tamanho do ícone */
+    text-decoration: none; /* Remove sublinhado se for link */
+}
+
+.medicamento-actions button.edit-button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Leve fundo azul ao passar o mouse */
+}
+
+.medicamento-actions button.delete-button:hover {
+    background-color: rgba(220, 53, 69, 0.1); /* Leve fundo vermelho ao passar o mouse */
+}
+
+
+
+
+/* Ajustes para o card de medicamento */
+.medicamento-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.medicamento-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #2c5aa0 0%, #059669 100%); /* Cor da borda superior */
+}
+
+.medicamento-header {
+    padding-top: 10px; /* Espaçamento para a borda superior */
+}
+
