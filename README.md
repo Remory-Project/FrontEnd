@@ -51,10 +51,13 @@ Backend
     Resend
 
 :shipit: Operações implementadas para cada entidade da aplicação
-    Entidade 	Criação 	Leitura 	Atualização 	Remoção
-    Cuidador 	   X 	        		     X
-    Paciente 	   X           X 		     X   	       X
-    Relatorio 	   X           X             X             X		
+
+    | Entidade  | Criação | Leitura | Atualização | Remoção |
+    |-----------|---------|---------|-------------|---------|
+    | Cuidador  | X       |         |             | X       |
+    | Paciente  | X       | X       | X           | X       |
+    | Relatorio | X       | X       | X           | X       |
+
 
     Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
 
