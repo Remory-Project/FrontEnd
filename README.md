@@ -36,11 +36,13 @@
 ⚠️⚠️⚠️ As informações a seguir devem ser enviadas juntamente com a versão final do projeto. ⚠️⚠️⚠️
 🖥️ Tecnologias e frameworks utilizados
 
-Frontend:
+Frontend
+
     HTML
     CSS
 
-Backend:
+Backend
+
     Node.js
     Typescript
     Prisma
