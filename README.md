@@ -59,23 +59,27 @@ Backend
     Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
 
 :neckbeard: Rotas da API REST utilizadas
-    POST   /criar/paciente
-    GET    /lista
-    PUT    /edit-paciente/:id
-    DELETE /delete-paciente/:id
-    POST   /login
-    POST   /criar-cuidador
-    DELETE /delete-cuidador/:id
-    PUT    /edit-cuidador/:id
-    POST   /criar-relatorio
-    GET    /paciente/:id/relatorios
-    POST   /auth/forgot-password
-    POST   /auth/forgot-password/verify
-    POST   /auth/forgot-password/reset
-    POST   /pacientes/:pacienteId/medicamentos
-    GET    /pacientes/:pacienteId/medicamentos
-    DELETE /medicamentos/:id
-    PUT    /edit-medicamento/:id
+
+    | Método  | Rota                                |
+    |---------|-------------------------------------|
+    | POST    | /criar/paciente                     |
+    | GET     | /lista                              |
+    | PUT     | /edit-paciente/:id                  |
+    | DELETE  | /delete-paciente/:id                |
+    | POST    | /login                              |
+    | POST    | /criar-cuidador                     |
+    | DELETE  | /delete-cuidador/:id                |
+    | PUT     | /edit-cuidador/:id                  |
+    | POST    | /criar-relatorio                    |
+    | GET     | /paciente/:id/relatorios            |
+    | POST    | /auth/forgot-password               |
+    | POST    | /auth/forgot-password/verify        |
+    | POST    | /auth/forgot-password/reset         |
+    | POST    | /pacientes/:pacienteId/medicamentos |
+    | GET     | /pacientes/:pacienteId/medicamentos |
+    | DELETE  | /medicamentos/:id                   |
+    | PUT     | /edit-medicamento/:id               |
+
 
 Documentação
 
