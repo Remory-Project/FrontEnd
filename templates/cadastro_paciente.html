@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Paciente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro_paciente.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="dashboard.html">
+            <img src="img/Remory.png" alt="Remory Logo" height="70">
+        </a>
+    </div>
+
+    <form id="cadastro-formP">
+        <h1>Cadastrar Paciente</h1>
+        
+        <div>
+            <label for="nome_completo">Nome</label>
+            <input type="text" id="nome_completo" name="nome_completo" required>
+        </div>
+        
+        <div>
+            <label for="data_nascimento">Data de nascimento</label>
+            <input type="date" id="data_nascimento" name="data_nascimento" required>
+        </div>
+        
+        <div>
+            <label for="sexo">Sexo</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone">
+        </div>
+        
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <div>
+            <label for="est_civ">Estado civil</label>
+            <input type="text" id="est_civ" name="est_civ">
+        </div>
+        
+        <div>
+            <label for="n_mae">Nome da mãe</label>
+            <input type="text" id="n_mae" name="n_mae">
+        </div>
+        
+        <div>
+            <label for="n_pai">Nome do pai</label>
+            <input type="text" id="n_pai" name="n_pai">
+        </div>
+        
+        <div>
+            <label for="nacic">Nacionalidade</label>
+            <input type="text" id="nacic" name="nacic">
+        </div>
+        
+        <div>
+            <label for="n_cont_emr">Contato de emergência</label>
+            <input type="text" id="n_cont_emr" name="n_cont_emr">
+        </div>
+        
+        <div>
+            <label for="end">Endereço</label>
+            <input type="text" id="end" name="end">
+        </div>
+        
+        <div>
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" name="cep">
+        </div>
+        <div>
+            <label for="tp_sangue">Tipo sanguíneo</label>
+            <input type="text" id="tp_sangue" name="tp_sangue">
+        </div>
+        <div>
+            <label for="alergias">Alergias</label>
+            <input type="text" id="alergias" name="alergias">
+        </div>
+        <div>
+            <label for="doen_cro">Doenças crônicas</label>
+            <input type="text" id="doen_cro" name="doen_cro">
+        </div>
+        <button type="submit">Cadastrar</button>
+        <p id="mensagem"></p>
+    </form>
+    
+    <script src="js/cadastro_paciente.js"></script>
+</body>
+</html>

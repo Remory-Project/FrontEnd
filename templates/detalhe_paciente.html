@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do paciente</title>
+    <link rel="stylesheet" href="css/detalhes_pacientes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <img src="img/Remory.png" alt="Remory Logo" height="70">
+        <a href="dashboard.html">Dashboard</a>
+    </header>
+
+    <main class="main-content">
+
+        <div class="container">
+            <section class="patient-details">
+                <h2 class="section-title">Informações do Paciente</h2>
+                <div class="container-excluir-paciente">
+                <button id="btn-excluir-paciente" class="btn-excluir" ><strong>🗑️ Excluir</strong></button>
+                </div>
+        
+                <ul class="patient-info-list">
+                    <li><strong>Nome:</strong> <span id="nome_completo"></span></li>
+                    <li><strong>Email:</strong> <span id="email"></span></li>
+                    <li><strong>Telefone:</strong> <span id="telefone"></span></li>
+                    <li><strong>Data de nascimento:</strong> <span id="data_nascimento"></span></li>
+                    <li><strong>Sexo:</strong> <span id="sexo"></span></li>
+                    <li><strong>Estado civil:</strong> <span id="estado_civil"></span></li>
+                    <li><strong>Nome da Mãe:</strong> <span id="nome_mae"></span></li>
+                    <li><strong>Nome do Pai:</strong> <span id="nome_pai"></span></li>
+                    <li><strong>Nacionalidade:</strong> <span id="nacionalidade"></span></li>
+                    <li><strong>Contato de Emergência:</strong> <span id="contato_emergencia"></span></li>
+                    <li><strong>Endereço:</strong> <span id="endereco"></span></li>
+                    <li><strong>Cep:</strong> <span id="cep"></span></li>
+                    <li><strong>Tipo Sanguíneo:</strong> <span id="tipo_sanguineo"></span></li>
+                    <li><strong>Alergia:</strong> <span id="alergias"></span></li>
+                    <li><strong>Doença crônica:</strong> <span id="doenca_cronica"></span></li>
+                </ul>
+                
+                <p class="patient-not-found" id="patient-not-found" style="display: none;">Paciente não encontrado.</p>
+                
+                <div class="button-container">
+                    <button type="button" class="btn btn-primary" id="btn-editar">Editar</button>
+                </div>
+            </section>
+
+            <div class="new-report-section">
+                <button type="button" class="btn btn-secondary" id="btn-novo-relatorio">Criar novo Relatório</button>
+            </div>
+
+            <section class="reports-section">
+                <h2 class="section-title">Relatórios de Visitas</h2>
+                
+                <div class="reports-container" id="lista-relatorios"></div>
+            </section>
+
+            <div class="back-section">
+                <button type="button" class="btn btn-back" id="btn-voltar">Voltar</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="modal-novo-relatorio">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Criar Novo Relatório de Visita</h3>
+                <button type="button" class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-novo-relatorio">
+                    <div class="form-group">
+                        <label for="data-visita">Data da Visita</label>
+                        <input type="date" id="data-visita" name="data-visita" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hora-visita">Hora da Visita</label>
+                        <input type="time" id="hora-visita" name="hora-visita" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipo-visita">Tipo de Visita</label>
+                        <select id="tipo-visita" name="tipo-visita" required>
+                            <option value="">Selecione...</option>
+                            <option value="consulta">Consulta</option>
+                            <option value="retorno">Retorno</option>
+                            <option value="emergencia">Emergência</option>
+                            <option value="exame">Exame</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descricao-visita">Descrição da Visita</label>
+                        <textarea id="descricao-visita" name="descricao-visita" rows="4" required placeholder="Descreva os detalhes da visita..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes-visita">Observações</label>
+                        <textarea id="observacoes-visita" name="observacoes-visita" placeholder="Informações adicionais sobre a visita (opcional)"></textarea>
+                    </div>
+
+                    
+                    <div class="form-grid">
+                        
+                        <div class="form-group">
+                            <label for="localizacao-dor">Localização da Dor</label>
+                            <input type="text" id="localizacao-dor" name="localizacao-dor" placeholder="Ex: N/A ou região específica">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pressao-arterial">Pressão Arterial</label>
+                            <input type="text" id="pressao-arterial" name="pressao-arterial" placeholder="Ex: 130/80 mmHg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="temperatura">Temperatura</label>
+                            <input type="text" id="temperatura" name="temperatura" placeholder="Ex: 36.5°C">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input type="text" id="peso" name="peso" placeholder="Ex: 68 kg">
+                        </div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" id="btn-cancelar-relatorio">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-salvar-relatorio">Salvar Relatório</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+    
+
+    <!-- Modal para visualizar detalhes do relatório -->
+    <div class="modal" id="modal-detalhes-relatorio">
+        <div class="modal-content modal-details">
+            <div class="modal-header modal-header-details">
+                <h3 id="modal-details-title">Relatório de Visita - 20/05/2025</h3>
+                <button type="button" class="modal-close" id="modal-details-close">&times;</button>
+            </div>
+            <div class="modal-body modal-body-details">
+                <div class="details-content">
+                    <div class="details-section">
+                        <h4>Informações da Visita</h4>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Data da Visita:</label>
+                                <span id="detail-data"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Hora da Visita:</label>
+                                <span id="detail-hora"></span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Tipo de Visita:</label>
+                                <span id="detail-tipo"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Descrição da Visita</h4>
+                        <div class="detail-description" id="detail-descricao">
+                            <!-- Descrição será inserida aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="details-section" id="detail-observacoes-section">
+                        <h4>Observações</h4>
+                        <div class="detail-description" id="detail-observacoes">
+                            <!-- Observações serão inseridas aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Informações Adicionais</h4>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <label>Localização Dor:</label>
+                                <span id="detail-localizacao">N/A</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Pressão Arterial:</label>
+                                <span id="detail-pressao">130/80 mmHg</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Temperatura:</label>
+                                <span id="detail-temperatura">36.5°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Peso:</label>
+                                <span id="detail-peso">68 kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para editar paciente -->
+    <div class="modal" id="modal-editar-paciente" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Informações do Paciente</h3>
+                <button type="button" class="modal-close" id="fechar-modal-editar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar-paciente">
+                    <div class="form-group">
+                        <label for="edit-nome">Nome Completo</label>
+                        <input type="text" id="edit-nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input type="email" id="edit-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-telefone">Telefone</label>
+                        <input type="text" id="edit-telefone" name="telefone">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-data-nascimento">Data de Nascimento</label>
+                        <input type="date" id="edit-data-nascimento" name="dataDeNascimento">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-sexo">Sexo</label>
+                        <select id="edit-sexo" name="sexo">
+                            <option value="">Selecione</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-estado-civil">Estado Civil</label>
+                        <input type="text" id="edit-estado-civil" name="estadoCivil">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-nome-mae">Nome da Mãe</label>
+                        <input type="text" id="edit-nome-mae" name="nomeDaMae">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-nome-pai">Nome do Pai</label>
+                        <input type="text" id="edit-nome-pai" name="nomeDoPai">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-nacionalidade">Nacionalidade</label>
+                        <input type="text" id="edit-nacionalidade" name="nacionalidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-contato-emergencia">Contato de Emergência</label>
+                        <input type="text" id="edit-contato-emergencia" name="contatoDeEmergencia">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-endereco">Endereço</label>
+                        <input type="text" id="edit-endereco" name="endereco">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-cep">CEP</label>
+                        <input type="text" id="edit-cep" name="cep">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-tipo-sanguineo">Tipo Sanguíneo</label>
+                        <input type="text" id="edit-tipo-sanguineo" name="tipoSanguineo">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-alergias">Alergias</label>
+                        <input type="text" id="edit-alergias" name="alergias">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-doenca-cronica">Doença Crônica</label>
+                        <input type="text" id="edit-doenca-cronica" name="doencaCronica">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-secondary" id="btn-cancelar-edicao">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button id="btn-novo-medicamento">Adicionar Medicamento</button>
+
+    <div id="modal-novo-medicamento" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="modal-med-close" class="close">&times;</span>
+            <h2>Novo Medicamento</h2>
+
+            <form id="form-novo-medicamento">
+            <div>
+                <label>Nome</label>
+                <input type="text" id="med-nome" required>
+            </div>
+
+            <div>
+                <label>Descrição (opcional)</label>
+                <textarea id="med-descricao"></textarea>
+            </div>
+
+            <div id="lista-horarios">
+                <div class="horario-item">
+                <label>Horários</label> <br>
+                <input type="time" class="med-horario" required>
+                <button type="button" class="btn-remover-horario" style="display:none;">Remover</button>
+                </div>
+            </div>
+
+            <button type="button" id="btn-add-horario">+ adicionar horário</button>
+
+            <button type="submit">Salvar</button>
+            <button type="button" id="btn-cancelar-med">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <h3>Medicamentos Agendados</h3>
+    <div id="lista-medicamentos"></div>
+    
+    <!-- MODAL DE EDIÇÃO DE MEDICAMENTO -->
+    <div id="modal-editar-medicamento" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="fechar-modal-editar-medicamento" class="close">&times;</span>
+            <h2>Editar Medicamento</h2>
+            <form id="form-editar-medicamento">
+                <label for="edit-nome-medicamento">Nome do Medicamento</label>
+                <input type="text" id="edit-nome-medicamento" required>
+    
+                <label for="edit-descricao-medicamento">Descrição</label>
+                <textarea id="edit-descricao-medicamento"></textarea>
+    
+                <div id="horarios-edit-container">
+                    <label>Horários</label>
+                    <button type="button" id="btn-add-horario-edit">+ Adicionar Horário</button>
+                    <div id="lista-horarios-edit"></div>
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                    <button type="button" id="btn-cancelar-edicao-medicamento">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/detalhe_paciente.js"></script>
+</body>
+</html>

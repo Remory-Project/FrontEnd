@@ -1,0 +1,184 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container do formulário */
+form {
+    background: white;
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+}
+
+/* Título do formulário */
+form h1 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 35px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* Estilo para os textos dos labels (Email: e Senha:) */
+form {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: #e5e7eb;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: block;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background-color: #d1d5db;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Quebra de linha após os inputs */
+br {
+    display: none;
+}
+
+/* Botão Entrar */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Link Cadastre-se */
+a {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+}
+
+a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+}
+
+a:active {
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    form {
+        padding: 30px 25px;
+        margin: 0 10px;
+        max-width: 340px;
+    }
+    
+    form h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    button[type="submit"],
+    a {
+        font-size: 15px;
+        padding: 12px 18px;
+    }
+}
+
+/* Melhorar a aparência em dispositivos móveis */
+@media (max-width: 360px) {
+    body {
+        padding: 15px;
+    }
+    
+    form {
+        padding: 25px 20px;
+    }
+    
+    form h1 {
+        font-size: 22px;
+    }
+}
+
+.link-esqueceu-senha {
+        all: unset;
+        color: #1e3a8a;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+        display: inline;
+        margin-top: 15px;
+        }
+    
+.link-esqueceu-senha {
+    text-decoration: none;
+    color: #2563eb;
+}
